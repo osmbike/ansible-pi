@@ -1,0 +1,10 @@
+---
+# vim:ff=unix ts=2 sw=2 ai sts=1 expandtab
+
+- name: Ensure Adafruit apt key is installed.
+  apt_key: id=78661FA5 url=https://apt.adafruit.com/apt.adafruit.com.gpg.key state=present
+  sudo: yes
+
+- name: Ensure Adafruit repository is in sources list.
+  apt_repository: repo='deb http://apt.adafruit.com/raspbian/ wheezy main' state=present
+  sudo: yes

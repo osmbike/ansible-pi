@@ -1,0 +1,10 @@
+---
+# vim:ff=unix ts=2 sw=2 ai sts=1 expandtab
+# intended for Raspbian Jessie
+-
+  hosts: pigps
+  remote_user: pi
+  roles:
+    - adafruit
+    - basic
+    - tfthat

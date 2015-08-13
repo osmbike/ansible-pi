@@ -1,0 +1,17 @@
+---
+# vim:ff=unix ts=2 sw=2 ai sts=1 expandtab
+
+- name: Ensure apt cache is up to date
+  apt: update_cache=yes cache_valid_time=3600
+  sudo: yes
+
+- name: Ensure tft hat packages are installed
+  action: apt pkg={{item}} state=latest
+  with_items:
+    - kbd
+    - raspberrypi-bootloader
+    - adafruit-pitft-helper
+  sudo: yes
+
+# TODO: add tasks that would be performed by
+# sudo adafruit-pitft-helper -t 28r

@@ -1,0 +1,21 @@
+---
+# vim:ff=unix ts=2 sw=2 ai sts=1 expandtab
+
+- name: Ensure apt cache is up to date
+  apt: update_cache=yes cache_valid_time=3600
+  sudo: yes
+
+- name: Upgrade all packages
+  apt: upgrade=full
+  sudo: yes
+
+- name: Enable unattended security upgrades
+  apt: pkg=unattended-upgrades state=latest
+  sudo: yes
+
+- name: Ensure packages are installed
+  action: apt pkg={{item}} state=latest
+  with_items:
+    - tmux
+    - vim-nox
+  sudo: yes
